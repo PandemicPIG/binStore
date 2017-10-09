@@ -1,19 +1,19 @@
 from os import path
 from os import stat
-import binascii
-import re
-import math 
-import numpy
-import json
-import datetime
+from binascii import hexlify
+from re import split
+from math import trunc, ceil
+from numpy import unique
+from json import dumps
+from datetime import datetime
 
-start = datetime.datetime.now()
+start = datetime.now()
 
 file_count = 0
 file_data = []
 
 to_find = '31201333120'
-len_to_find = math.trunc(math.ceil(len(to_find)/2.0))
+len_to_find = trunc(ceil(len(to_find)/2.0))
 
 bytes_to_read = 1024 * 16 #read chunks of 16kb
 if(len_to_find > bytes_to_read):
@@ -41,7 +41,7 @@ for fileIndex in file_data:
     while byte:
         chunk = prev_chunk + byte
         
-        check_chunk = re.split(to_find, binascii.hexlify(chunk))
+        check_chunk = split(to_find, hexlify(chunk))
         
         if(len(check_chunk) > 1):
           pos = (loc -1) * bytes_to_read + len(check_chunk[0])/2
@@ -57,14 +57,14 @@ for fileIndex in file_data:
       
     file.close()
     
-pos_list = numpy.unique(pos_list).tolist()
+pos_list = unique(pos_list).tolist()
 
 out = {
-        'took': str(datetime.datetime.now() - start),
+        'took': str(datetime.now() - start),
         'count': len(pos_list),
         'seq': to_find,
         'length': len_to_find,
         'locations': pos_list
       }
 
-print json.dumps(out)
+print dumps(out)
