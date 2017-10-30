@@ -11,3 +11,12 @@ def execute(handler):
     'path': handler.path,
     'req': handler.post_data
   }))
+  
+def create(handler):
+  pass
+
+def insert(handler):
+  pass
+
+def delete(handler):
+  pass

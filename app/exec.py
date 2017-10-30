@@ -16,9 +16,10 @@ class request_handler(BaseHTTPServer.BaseHTTPRequestHandler):
   def call_endpoint(self, path):
     if path[-1:] == '/': path = path[:-1]
       
-    if path == '/data':
-      data.execute(self)
-      
+    if path == '/select': data.select(self)
+    elif path == '/create': data.create(self)
+    elif path == '/insert': data.insert(self)
+    elif path == '/delete': data.delete(self)
     else:
       status = 404
       self.send_response(status)

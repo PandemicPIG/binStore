@@ -7,10 +7,11 @@ data_in = 'CAGATCAGTACAGAAGCTAGTAAGCAGATAATACGATACAGTC'
 
 def getLib():
   return {
-    "0": ["A", "a"],
-    "1": ["C", "c"],
-    "2": ["G", "g"],
-    "3": ["T", "t"]
+    "1": ["A", "a"],
+    "2": ["C", "c"],
+    "3": ["G", "g"],
+    "4": ["T", "t"],
+    "0": ["N", "n"]
   }
 
 def getReverseLib():

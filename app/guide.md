@@ -5,7 +5,7 @@ create operations
   - create new chromosome store in existing genome
   - create new chromosome data in chromosome store
 
-get operations
+select operations
 
   - get chromosome base pairs length
   - get number of base pairs before matching sequence
